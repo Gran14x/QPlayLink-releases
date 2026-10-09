@@ -1,0 +1,18 @@
+QPlayLink
+Copyright (c) 2026 Greno4ka. All rights reserved.
+
+QPlayLink is free closed-source software (freeware). You may download, install
+and use it free of charge for personal, non-commercial purposes.
+
+You may not sell, rent, modify, decompile or redistribute QPlayLink (in whole
+or in part) without the copyright holder's written permission. The official
+download location is https://github.com/Gran14x/QPlayLink-releases/releases
+
+Full terms are shown in the license agreement on first launch of the program.
+The software is provided "as is", without warranty of any kind.
+
+Third-party open-source components included in QPlayLink are distributed under
+their own licenses (Qt and PySide6 under LGPL v3, etc.) — see
+THIRD_PARTY_LICENSES.txt. Nothing in this notice restricts the rights granted
+by those licenses; in particular, you may replace the LGPL-licensed Qt/PySide6
+libraries in the _internal folder with your own compatible versions.
