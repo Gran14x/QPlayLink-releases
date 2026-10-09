@@ -21,7 +21,7 @@
 | Игра | Что показывает | Источник |
 |---|---|---|
 | Dota 2 | Матчи, герои, форма, разбор матча, контрпики | OpenDota |
-| Counter-Strike 2 | Premier-рейтинг, карты, последние матчи | csstats.gg, Leetify |
+| Counter-Strike 2 | Premier-рейтинг, ранги по картам, последние матчи | Leetify |
 | FACEIT | ELO, уровень, карты, K/D, последние матчи | официальный API FACEIT |
 | League of Legends | Ранг, LP, мастерство чемпионов, последние матчи | официальный API Riot Games |
 | Deadlock | Ранг, герои, последние матчи | deadlock-api.com |
