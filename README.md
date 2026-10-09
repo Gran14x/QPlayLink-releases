@@ -11,28 +11,30 @@
 
 1. Скачайте `QPlayLink-<версия>.zip`.
 2. Распакуйте в любую папку и запустите `QPlayLink.exe`.
-3. Дальше программа обновляется сама.
+3. Дальше программа обновляется сама — скачиваются только изменившиеся файлы.
 
 > Windows SmartScreen может предупредить о неизвестном издателе — нажмите «Подробнее» → «Выполнить в любом случае».
 > У программы нет платной цифровой подписи.
 
 ## Игры
 
-| Игра | Что показывает |
-|---|---|
-| Dota 2 | Матчи, герои, форма, разбор матча, контрпики |
-| Counter-Strike 2 | Premier-рейтинг, карты, история |
-| FACEIT | ELO, уровень, карты, последние матчи |
-| Deadlock | Ранг, герои, последние матчи |
-| League of Legends | Ранг, LP, чемпионы |
-| Valorant | Ранг, RR, агенты |
-| Overwatch 2 | Ранги по ролям, контрпики |
-| Apex Legends | Ранг, RP, легенды |
-| War Thunder | Эффективность по режимам и технике |
-| Chess.com | Рейтинг по режимам, партии |
-| Steam | Уровень, библиотека, часы в играх |
-| Brawl Stars | Кубки, бойцы |
-| Genshin Impact · Honkai: Star Rail · Zenless Zone Zero | Витрина персонажей, достижения |
+| Игра | Что показывает | Источник |
+|---|---|---|
+| Dota 2 | Матчи, герои, форма, разбор матча, контрпики | OpenDota |
+| Counter-Strike 2 | Premier-рейтинг, карты, последние матчи | csstats.gg, Leetify |
+| FACEIT | ELO, уровень, карты, K/D, последние матчи | официальный API FACEIT |
+| League of Legends | Ранг, LP, мастерство чемпионов, последние матчи | официальный API Riot Games |
+| Deadlock | Ранг, герои, последние матчи | deadlock-api.com |
+| Overwatch 2 | Ранги по ролям, контрпики | OverFast API |
+| Apex Legends | Ранг, RP, легенды | Apex Legends Status |
+| War Thunder | Эффективность по режимам и технике | ThunderSkill |
+| Chess.com | Рейтинг по режимам, партии | официальный API Chess.com |
+| Steam | Уровень, библиотека, часы в играх | официальный API Steam |
+| Brawl Stars | Кубки, бойцы, бои | официальный API Supercell |
+| Genshin Impact · Honkai: Star Rail · Zenless Zone Zero | Витрина персонажей, достижения | Enka.Network |
+
+**Скоро:** Valorant — вернётся со входом через аккаунт Riot (так требуют правила Riot Games);
+Мир Танков — после подключения официального API Lesta.
 
 ## Возможности
 
@@ -45,8 +47,9 @@
 
 ## Данные и безопасность
 
-- Программа **не читает память игр и не меняет их файлы** — только открытые данные (Steam, OpenDota, Riot и др.). Античит она не затрагивает.
+- Программа **не читает память игр и не меняет их файлы** — только открытые данные игровых сервисов. Античит она не затрагивает.
 - Пароли от Steam и других сервисов не нужны и не запрашиваются. Steam привязывается через официальный вход Steam.
+- Ключи API игровых сервисов хранятся только на сервере QPlayLink — в программе их нет.
 - Аккаунт QPlayLink необязателен: без него работают поиск и статистика, с ним — синхронизация избранного, группы, цели и Telegram.
 - Ваши данные не продаются и не передаются третьим лицам.
 
@@ -55,7 +58,32 @@
 Ошибки и предложения — во вкладке [Issues](../../issues).
 Если программа упадёт, описание ошибки уйдёт разработчику само (это можно выключить в настройках).
 
----
+## Лицензия
 
-QPlayLink не связан с Valve, Riot Games, Blizzard, EA, Gaijin, Supercell, HoYoverse и Chess.com.
+**QPlayLink** — бесплатная программа с закрытым исходным кодом. © 2026 Greno4ka. Все права защищены.
+Использование — на условиях лицензионного соглашения, которое показывается при первом запуске программы.
+
+В программу входят открытые сторонние компоненты, каждый — под своей лицензией:
+
+| Компонент | Лицензия |
+|---|---|
+| Qt 6, PySide6, Shiboken6 | GNU LGPL v3 |
+| Python и встроенные в него библиотеки (OpenSSL, SQLite, zlib, expat, libffi и др.) | PSF License, Apache 2.0, MIT, BSD, zlib |
+| requests, packaging | Apache 2.0 |
+| urllib3, charset-normalizer, curl_cffi, cffi, setuptools | MIT |
+| idna, pycparser | BSD-3-Clause |
+| certifi | MPL 2.0 |
+| curl, BoringSSL, nghttp2, Brotli, Zstandard (внутри curl_cffi) | curl, Apache 2.0, MIT, BSD |
+
+Qt и PySide6 используются без изменений и лежат отдельными библиотеками в папке `_internal\PySide6` — их можно заменить своей совместимой сборкой.
+Исходный код Qt: [download.qt.io](https://download.qt.io/official_releases/qt/), PySide6: [Qt for Python](https://download.qt.io/official_releases/QtForPython/).
+
+Полные тексты всех лицензий — в файле [THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt) и в программе:
+Настройки → Система → О программе → «Лицензии».
+
+QPlayLink не связан с Valve, Riot Games, Blizzard, EA, Gaijin, Supercell, HoYoverse, FACEIT и Chess.com.
 Названия игр и логотипы принадлежат их владельцам.
+
+QPlayLink isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+
+This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: www.supercell.com/fan-content-policy.
