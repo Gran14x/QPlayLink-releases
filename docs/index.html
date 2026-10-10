@@ -125,6 +125,39 @@ footer p{margin:6px 0;max-width:900px}
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;place-items:center;z-index:50;padding:20px;cursor:zoom-out}
 .lightbox.on{display:grid}
 .lightbox img{max-height:92vh;border-radius:12px}
+
+/* телефон */
+.mobile-note{display:none;margin:0 0 14px;padding:12px 14px;border-radius:12px;background:rgba(245,181,74,.10);
+  border:1px solid rgba(245,181,74,.28);color:#f7d08f;font-size:14px}
+.share{display:none}
+body.is-mobile .mobile-note{display:block}
+body.is-mobile .share{display:inline-flex}
+body.is-mobile .cta .js-download{background:rgba(255,255,255,.06);border:1px solid var(--line);box-shadow:none}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .nav .wrap{height:56px}
+  .brand{font-size:17px}
+  .hero{padding:28px 0 24px}
+  h1{font-size:32px;margin:14px 0 12px}
+  .lead{font-size:16.5px;margin-bottom:22px}
+  .cta{flex-direction:column;align-items:stretch}
+  .cta .btn{justify-content:center;width:100%}
+  .btn-big{padding:15px 18px;font-size:17px}
+  .meta{justify-content:center;font-size:13px}
+  .games{padding:10px 0 0}
+  .icons{gap:8px 4px}
+  .icons figure{width:68px}
+  .icons img{width:40px;height:40px;border-radius:10px}
+  .icons figcaption{font-size:11px}
+  section{padding:48px 0}
+  .sub{font-size:15.5px;margin-bottom:24px}
+  .feature{gap:18px;margin-bottom:48px}
+  .feature h3{font-size:23px}
+  .card{padding:18px}
+  .final{padding:56px 0}
+  .final .btn{width:100%;justify-content:center}
+  .lightbox{padding:8px}
+}
 </style>
 </head>
 <body>
@@ -150,7 +183,12 @@ footer p{margin:6px 0;max-width:900px}
       <h1>Вся игровая статистика <span>в одном окне</span></h1>
       <p class="lead">Dota 2, CS2, FACEIT, League of Legends, Deadlock и ещё 9 игр. Введите ник или ссылку на Steam —
         и сразу видите рейтинг, матчи, героев и прогресс. Свой и друзей.</p>
+      <p class="mobile-note">QPlayLink — программа для Windows. Отправьте ссылку себе на компьютер и скачайте там.</p>
       <div class="cta">
+        <button class="btn btn-primary btn-big share js-share" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></svg>
+          <span>Отправить ссылку на компьютер<small>через Telegram, почту или скопировать</small></span>
+        </button>
         <a class="btn btn-primary btn-big js-download" href="https://github.com/Gran14x/QPlayLink-releases/releases/latest">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
           <span>Скачать для Windows<small class="js-size">установщик, без прав администратора</small></span>
@@ -287,6 +325,10 @@ footer p{margin:6px 0;max-width:900px}
 <section class="final">
   <div class="wrap">
     <h2 class="h2">Попробуйте — это минута</h2>
+    <p class="mobile-note" style="max-width:520px;margin:0 auto 16px">Скачивать нужно на компьютере с Windows.</p>
+    <button class="btn btn-primary btn-big share js-share" type="button" style="margin-bottom:12px">
+      <span>Отправить ссылку на компьютер</span>
+    </button><br>
     <a class="btn btn-primary btn-big js-download" href="https://github.com/Gran14x/QPlayLink-releases/releases/latest">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
       <span>Скачать QPlayLink<small class="js-size">установщик, без прав администратора</small></span>
@@ -318,6 +360,21 @@ footer p{margin:6px 0;max-width:900px}
 <script>
 // Кнопки «Скачать» ведут прямо на установщик последней версии (данные — из GitHub Releases).
 (function () {
+  // Телефон или планшет: программу там не поставить — главная кнопка «Отправить ссылку на компьютер»
+  var mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+               (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+  if (mobile) document.body.classList.add("is-mobile");
+  var pageUrl = "https://gran14x.github.io/QPlayLink-releases/";
+  document.querySelectorAll(".js-share").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var data = {title: "QPlayLink", text: "QPlayLink — вся игровая статистика в одном окне (Windows)", url: pageUrl};
+      if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+      var done = function () { var s = b.querySelector("span"); var old = s.innerHTML; s.textContent = "Ссылка скопирована ✓";
+                               setTimeout(function () { s.innerHTML = old; }, 2200); };
+      if (navigator.clipboard) navigator.clipboard.writeText(pageUrl).then(done, function () { prompt("Ссылка:", pageUrl); });
+      else prompt("Ссылка:", pageUrl);
+    });
+  });
   fetch("https://api.github.com/repos/Gran14x/QPlayLink-releases/releases/latest")
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (rel) {
