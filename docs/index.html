@@ -257,7 +257,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
       <a href="#safe">Безопасность</a>
       <a href="#faq">Вопросы</a>
     </nav>
-    <a class="btn btn-primary btn-sm js-download" href="https://github.com/Gran14x/QPlayLink-releases/releases/latest">Скачать</a>
+    <a class="btn btn-primary btn-sm js-download" href="https://github.com/Gran14x/QPlayLink-releases/releases/latest/download/QPlayLink-Setup.exe">Скачать</a>
   </div>
 </header>
 
@@ -278,7 +278,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></svg>
             <span>Отправить ссылку на компьютер<small>Telegram, почта или скопировать</small></span>
           </button>
-          <a class="btn btn-primary btn-big js-download" href="https://github.com/Gran14x/QPlayLink-releases/releases/latest">
+          <a class="btn btn-primary btn-big js-download" href="https://github.com/Gran14x/QPlayLink-releases/releases/latest/download/QPlayLink-Setup.exe">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
             <span>Скачать для Windows<small class="js-size">установщик · без прав администратора</small></span>
           </a>
@@ -486,7 +486,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
       <p class="mobile-note" style="max-width:520px;margin:0 auto 16px">Скачивать нужно на компьютере с Windows.</p>
       <div class="cta">
         <button class="btn btn-primary btn-big share js-share" type="button"><span>Отправить ссылку на компьютер</span></button>
-        <a class="btn btn-primary btn-big js-download" href="https://github.com/Gran14x/QPlayLink-releases/releases/latest">
+        <a class="btn btn-primary btn-big js-download" href="https://github.com/Gran14x/QPlayLink-releases/releases/latest/download/QPlayLink-Setup.exe">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
           <span>Скачать QPlayLink<small class="js-size">установщик · без прав администратора</small></span>
         </a>
@@ -535,22 +535,31 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
     });
   });
 
-  // Кнопки «Скачать» ведут прямо на установщик последней версии (данные — из GitHub Releases)
-  fetch("https://api.github.com/repos/Gran14x/QPlayLink-releases/releases/latest")
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (rel) {
-      if (!rel) return;
-      var setup = (rel.assets || []).filter(function (a) { return /Setup.*\.exe$/i.test(a.name); })[0];
-      var ver = (rel.tag_name || "").replace(/^v/, "");
-      document.querySelectorAll(".js-version").forEach(function (el) { el.textContent = ver || "—"; });
-      if (!setup) return;
-      var mb = (setup.size / 1048576).toFixed(1).replace(".", ",");
-      document.querySelectorAll(".js-download").forEach(function (a) { a.href = setup.browser_download_url; });
+  // Кнопки «Скачать»: версия и размер — из latest.json рядом со страницей (без лимитов API GitHub);
+  // если его нет — из API GitHub. Без обоих ссылка всё равно ведёт на последний установщик.
+  function apply(ver, url, size) {
+    document.querySelectorAll(".js-version").forEach(function (el) { el.textContent = ver || "—"; });
+    if (url) document.querySelectorAll(".js-download").forEach(function (a) { a.href = url; });
+    if (size) {
+      var mb = (size / 1048576).toFixed(1).replace(".", ",");
       document.querySelectorAll(".js-size").forEach(function (el) {
         el.textContent = "установщик " + mb + " МБ · без прав администратора";
       });
-    })
-    .catch(function () {});
+    }
+  }
+  function fromGitHub() {
+    return fetch("https://api.github.com/repos/Gran14x/QPlayLink-releases/releases/latest")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rel) {
+        if (!rel) return;
+        var setup = (rel.assets || []).filter(function (a) { return /Setup-[\d.]+\.exe$/i.test(a.name); })[0];
+        apply((rel.tag_name || "").replace(/^v/, ""), setup && setup.browser_download_url, setup && setup.size);
+      });
+  }
+  fetch("latest.json?t=" + Date.now(), {cache: "no-store"})
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (d) { apply(d.version, d.setup && d.setup.url, d.setup && d.setup.size); })
+    .catch(function () { fromGitHub().catch(function () {}); });
 
   // Защита от копирования: без контекстного меню, перетаскивания и Ctrl+C / Ctrl+S / Ctrl+U
   document.addEventListener("contextmenu", function (e) { if (!e.target.closest("a")) e.preventDefault(); });
