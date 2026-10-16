@@ -7,7 +7,11 @@
 <meta name="description" content="Бесплатная программа для Windows: статистика Dota 2, CS2, FACEIT, League of Legends, Deadlock и других игр в одном окне. Разбор матчей, контрпики, рейтинг друзей.">
 <meta property="og:title" content="QPlayLink — вся игровая статистика в одном окне">
 <meta property="og:description" content="Dota 2, CS2, FACEIT, League of Legends и ещё 10 игр. Бесплатно для Windows.">
-<meta property="og:image" content="https://qplaylink.greno4ka.ru/img/02_dota.webp">
+<meta property="og:image" content="https://qplaylink.greno4ka.ru/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://qplaylink.greno4ka.ru/">
 <meta property="og:url" content="https://qplaylink.greno4ka.ru/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0a0b10">
@@ -40,6 +44,8 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-tou
   background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
   background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 75%);
   mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 75%)}
+/* свечения не должны расширять страницу (иначе на телефоне она уменьшается) */
+section{overflow-x:clip}
 .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:-1;opacity:.55}
 
 /* шапка */
