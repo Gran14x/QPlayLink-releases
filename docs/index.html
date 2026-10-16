@@ -168,6 +168,7 @@ section{position:relative;padding:96px 0}
 .shot img{cursor:zoom-in}
 .newcards img{border-radius:12px;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border:1px solid var(--line);margin-bottom:4px}
 .newcards a{color:#a99dff}
+.newcards .ico{margin-bottom:6px}
 
 /* карточки */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -379,11 +380,13 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
     <div class="center reveal"><span class="eyebrow">Что нового</span><h2 class="h2">Новый дизайн и новые функции</h2>
       <p class="sub">Светлая и тёмная тема, новая страница CS2, Teamfight Tactics и подсказки после каждой игры.</p></div>
     <div class="cards newcards">
-      <div class="card reveal"><img src="img/new_lobby.webp" alt="Разведка лобби FACEIT" loading="lazy" width="640" height="400"><h4>Разведка лобби FACEIT</h4><p>Перед матчем видно уровень, форму и любимые карты всех десяти игроков.</p></div>
       <div class="card reveal"><img src="img/new_postgame.webp" alt="Итог после игры" loading="lazy" width="640" height="400"><h4>Итог после игры</h4><p>Карточка с главным за матч. После серии поражений программа мягко предложит сделать перерыв.</p></div>
-      <div class="card reveal"><img src="img/new_tft.webp" alt="Teamfight Tactics" loading="lazy" width="640" height="400"><h4>Teamfight Tactics</h4><p>Ранг, последние игры, места и составы.</p></div>
       <div class="card reveal"><img src="img/new_mates.webp" alt="Тиммейты в Dota 2" loading="lazy" width="640" height="400"><h4>Тиммейты в Dota 2</h4><p>С кем вы чаще играете и с кем лучше выигрываете. Любимых можно отметить звёздочкой.</p></div>
       <div class="card reveal"><img src="img/new_goal.webp" alt="Цель на месяц" loading="lazy" width="640" height="400"><h4>Цель на месяц и итоги</h4><p>Поставьте цель на месяц, а в конце получите итоги: сколько сыграли и что выросло.</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6M11 8v6"/></svg></div>
+        <h4>Разведка лобби FACEIT</h4><p>Перед матчем видно уровень, форму и любимые карты всех десяти игроков.</p></div>
+      <div class="card reveal"><div class="ico"><img src="icons/tft.png" alt="" style="width:30px;height:30px;border-radius:8px"></div>
+        <h4>Teamfight Tactics</h4><p>Ранг, последние игры, места и составы. Пятнадцатая игра в программе.</p></div>
       <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/></svg></div>
         <h4>Статистика прямо в Telegram</h4><p>Напишите <a href="https://t.me/QPlayLink_bot">@QPlayLink_bot</a>, например <b>/faceit donk666</b> или <b>/dota 321580662</b>. Есть Dota 2, CS2, FACEIT, League of Legends и Chess.com.</p></div>
     </div>
@@ -426,8 +429,8 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
         <p>Рейтинг, сильные и слабые стороны, карты, матчи и тиммейты. Плюс официальный API FACEIT: уровень, ELO и форма.</p>
         <ul class="list"><li>Разведка лобби FACEIT перед матчем</li><li>Premier-рейтинг и ранги по картам</li><li>Поиск по нику, ссылке или SteamID</li></ul>
       </div>
-      <div class="frame shot" style="--c:var(--faceit)"><div class="window"><div class="bar"><i></i><i></i><i></i><span>FACEIT</span></div>
-        <img src="img/05_faceit_sm.webp" data-full="img/05_faceit.webp" alt="FACEIT в QPlayLink" loading="lazy" width="640" height="400"></div></div>
+      <div class="frame shot" style="--c:var(--faceit)"><div class="window"><div class="bar"><i></i><i></i><i></i><span>Counter-Strike 2</span></div>
+        <img src="img/05_cs2_sm.webp" data-full="img/05_cs2.webp" alt="CS2 в QPlayLink" loading="lazy" width="640" height="400"></div></div>
     </div>
 
     <div class="feature flip f-lol reveal">
