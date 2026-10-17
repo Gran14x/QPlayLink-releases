@@ -1,13 +1,13 @@
 {
- "version": "1.1.18",
+ "version": "1.2.0",
  "setup": {
-  "name": "QPlayLink-Setup-1.1.18.exe",
-  "size": 30285226,
-  "url": "https://github.com/Gran14x/QPlayLink-releases/releases/download/v1.1.18/QPlayLink-Setup-1.1.18.exe"
+  "name": "QPlayLink-Setup-1.2.0.exe",
+  "size": 34280550,
+  "url": "https://github.com/Gran14x/QPlayLink-releases/releases/download/v1.2.0/QPlayLink-Setup-1.2.0.exe"
  },
  "zip": {
-  "name": "QPlayLink-1.1.18.zip",
-  "size": 39843861,
-  "url": "https://github.com/Gran14x/QPlayLink-releases/releases/download/v1.1.18/QPlayLink-1.1.18.zip"
+  "name": "QPlayLink-1.2.0.zip",
+  "size": 43851581,
+  "url": "https://github.com/Gran14x/QPlayLink-releases/releases/download/v1.2.0/QPlayLink-1.2.0.zip"
  }
 }
