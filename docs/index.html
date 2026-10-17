@@ -4,10 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QPlayLink — вся игровая статистика в одном окне</title>
-<meta name="description" content="Бесплатная программа для Windows: статистика Dota 2, CS2, FACEIT, League of Legends, Deadlock и других игр в одном окне. Разбор матчей, контрпики, рейтинг друзей.">
+<meta name="description" content="Бесплатная программа для Windows: статистика Dota 2, CS2, FACEIT, League of Legends, Teamfight Tactics и других игр в одном окне. Разбор матчей, контрпики, разведка лобби FACEIT, рейтинг друзей.">
 <meta property="og:title" content="QPlayLink — вся игровая статистика в одном окне">
-<meta property="og:description" content="Dota 2, CS2, FACEIT, League of Legends и ещё 10 игр. Бесплатно для Windows.">
-<meta property="og:image" content="https://qplaylink.greno4ka.ru/img/02_dota.webp">
+<meta property="og:description" content="Dota 2, CS2, FACEIT, League of Legends и ещё 11 игр. Бесплатно для Windows.">
+<meta property="og:image" content="https://qplaylink.greno4ka.ru/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://qplaylink.greno4ka.ru/">
 <meta property="og:url" content="https://qplaylink.greno4ka.ru/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0a0b10">
@@ -40,6 +44,8 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-tou
   background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
   background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 75%);
   mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 75%)}
+/* свечения не должны расширять страницу (иначе на телефоне она уменьшается) */
+section{overflow-x:clip}
 .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:-1;opacity:.55}
 
 /* шапка */
@@ -160,6 +166,9 @@ section{position:relative;padding:96px 0}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
 .f-dota{--c:var(--dota)}.f-faceit{--c:var(--faceit)}.f-lol{--c:var(--lol)}
 .shot img{cursor:zoom-in}
+.newcards img{border-radius:12px;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border:1px solid var(--line);margin-bottom:4px}
+.newcards a{color:#a99dff}
+.newcards .ico{margin-bottom:6px}
 
 /* карточки */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -253,6 +262,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
     <nav>
       <a href="#start">Как начать</a>
       <a href="#video">Видео</a>
+      <a href="#new">Новое</a>
       <a href="#features">Возможности</a>
       <a href="#safe">Безопасность</a>
       <a href="#faq">Вопросы</a>
@@ -270,7 +280,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
       <div>
         <span class="badge"><i></i>Бесплатно · Windows 10 и 11</span>
         <h1>Вся игровая статистика <span class="grad">в одном окне</span></h1>
-        <p class="lead"><b>Dota 2, CS2, FACEIT, League of Legends, Deadlock</b> и ещё 9 игр. Введите ник или ссылку на Steam —
+        <p class="lead"><b>Dota 2, CS2, FACEIT, League of Legends, Deadlock</b> и ещё 10 игр. Введите ник или ссылку на Steam —
           и сразу видите рейтинг, матчи, героев и прогресс. Свой и друзей.</p>
         <p class="mobile-note">QPlayLink — программа для Windows. Отправьте ссылку себе на компьютер и скачайте там.</p>
         <div class="cta">
@@ -303,7 +313,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
       </div>
     </div>
     <div class="stats reveal">
-      <div class="stat"><b>14</b><span>игр в одном окне</span></div>
+      <div class="stat"><b>15</b><span>игр в одном окне</span></div>
       <div class="stat"><b>0 ₽</b><span>без подписок и рекламы</span></div>
       <div class="stat"><b>~6 МБ</b><span>обновления по частям</span></div>
       <div class="stat"><b>1 мин</b><span>от скачивания до статистики</span></div>
@@ -329,6 +339,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
       <span class="chip"><img src="icons/genshin.png" alt="">Genshin Impact</span>
       <span class="chip"><img src="icons/hsr.png" alt="">Honkai: Star Rail</span>
       <span class="chip"><img src="icons/zzz.png" alt="">Zenless Zone Zero</span>
+      <span class="chip"><img src="icons/tft.png" alt="">Teamfight Tactics</span>
     </div>
   </div>
 </div>
@@ -364,6 +375,24 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
   </div>
 </section>
 
+<section id="new" style="padding-top:20px">
+  <div class="wrap">
+    <div class="center reveal"><span class="eyebrow">Что нового</span><h2 class="h2">Новый дизайн и новые функции</h2>
+      <p class="sub">Светлая и тёмная тема, новая страница CS2, Teamfight Tactics и подсказки после каждой игры.</p></div>
+    <div class="cards newcards">
+      <div class="card reveal"><img src="img/new_postgame.webp" alt="Итог после игры" loading="lazy" width="640" height="400"><h4>Итог после игры</h4><p>Карточка с главным за матч. После серии поражений программа мягко предложит сделать перерыв.</p></div>
+      <div class="card reveal"><img src="img/new_mates.webp" alt="Тиммейты в Dota 2" loading="lazy" width="640" height="400"><h4>Тиммейты в Dota 2</h4><p>С кем вы чаще играете и с кем лучше выигрываете. Любимых можно отметить звёздочкой.</p></div>
+      <div class="card reveal"><img src="img/new_goal.webp" alt="Цель на месяц" loading="lazy" width="640" height="400"><h4>Цель на месяц и итоги</h4><p>Поставьте цель на месяц, а в конце получите итоги: сколько сыграли и что выросло.</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6M11 8v6"/></svg></div>
+        <h4>Разведка лобби FACEIT</h4><p>Перед матчем видно уровень, форму и любимые карты всех десяти игроков.</p></div>
+      <div class="card reveal"><div class="ico"><img src="icons/tft.png" alt="" style="width:30px;height:30px;border-radius:8px"></div>
+        <h4>Teamfight Tactics</h4><p>Ранг, последние игры, места и составы. Пятнадцатая игра в программе.</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/></svg></div>
+        <h4>Статистика прямо в Telegram</h4><p>Напишите <a href="https://t.me/QPlayLink_bot">@QPlayLink_bot</a>, например <b>/faceit donk666</b> или <b>/dota 321580662</b>. Есть Dota 2, CS2, FACEIT, League of Legends и Chess.com.</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="features">
   <div class="glow" style="width:500px;height:500px;left:-220px;top:160px;background:#e2412e;opacity:.16"></div>
   <div class="glow" style="width:500px;height:500px;right:-220px;top:1250px;background:#ff5a1f;opacity:.12"></div>
@@ -395,13 +424,13 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
 
     <div class="feature f-faceit reveal">
       <div class="text">
-        <span class="tag"><img src="icons/faceit.png" alt="">FACEIT · CS2</span>
-        <h3>ELO, уровень и форма</h3>
-        <p>Официальный API FACEIT: уровень и ELO, винрейт, K/D, хедшоты, статистика по картам и 20 последних матчей.</p>
-        <ul class="list"><li>Поиск по нику, ссылке или SteamID</li><li>CS2: Premier-рейтинг и ранги по картам</li><li>История ELO и цели</li></ul>
+        <span class="tag"><img src="icons/cs2.png" alt="">CS2 · FACEIT</span>
+        <h3>CS2 как на Leetify</h3>
+        <p>Рейтинг, сильные и слабые стороны, карты, матчи и тиммейты. Плюс официальный API FACEIT: уровень, ELO и форма.</p>
+        <ul class="list"><li>Разведка лобби FACEIT перед матчем</li><li>Premier-рейтинг и ранги по картам</li><li>Поиск по нику, ссылке или SteamID</li></ul>
       </div>
-      <div class="frame shot" style="--c:var(--faceit)"><div class="window"><div class="bar"><i></i><i></i><i></i><span>FACEIT</span></div>
-        <img src="img/05_faceit_sm.webp" data-full="img/05_faceit.webp" alt="FACEIT в QPlayLink" loading="lazy" width="640" height="400"></div></div>
+      <div class="frame shot" style="--c:var(--faceit)"><div class="window"><div class="bar"><i></i><i></i><i></i><span>Counter-Strike 2</span></div>
+        <img src="img/05_cs2_sm.webp" data-full="img/05_cs2.webp" alt="CS2 в QPlayLink" loading="lazy" width="640" height="400"></div></div>
     </div>
 
     <div class="feature flip f-lol reveal">
