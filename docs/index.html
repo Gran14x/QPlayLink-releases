@@ -17,10 +17,21 @@
 <meta name="theme-color" content="#0a0b10">
 <link rel="icon" href="favicon.png">
 <script>document.documentElement.classList.add("js")</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* шрифты лежат рядом со страницей (SIL OFL 1.1, fonts/OFL-*.txt): адрес посетителя не уходит сторонним сервисам */
+@font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/manrope-cyrillic.woff2) format("woff2");
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/manrope-latin-ext.woff2) format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/manrope-latin.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Unbounded";font-style:normal;font-weight:600 700;font-display:swap;src:url(fonts/unbounded-cyrillic.woff2) format("woff2");
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Unbounded";font-style:normal;font-weight:600 700;font-display:swap;src:url(fonts/unbounded-latin-ext.woff2) format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Unbounded";font-style:normal;font-weight:600 700;font-display:swap;src:url(fonts/unbounded-latin.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
   --bg:#0a0b10; --bg2:#0f1118; --card:#13151e; --card2:#171a25; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
   --text:#f1f2f7; --muted:#9aa1b4; --dim:#6d7488;
@@ -347,7 +358,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
 <section id="start">
   <div class="wrap">
     <div class="center reveal"><span class="eyebrow">Как начать</span><h2 class="h2">Три шага — и всё готово</h2>
-      <p class="sub">Никаких настроек и ключей: программа сама подключается к официальным источникам данных.</p></div>
+      <p class="sub">Никаких настроек и ключей: программа сама подключается к источникам данных.</p></div>
     <div class="steps">
       <div class="step reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></div>
         <h4>Скачайте и установите</h4><p>Один файл, права администратора не нужны. Ярлык появится в «Пуске».</p></div>
@@ -425,7 +436,7 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
     <div class="feature f-faceit reveal">
       <div class="text">
         <span class="tag"><img src="icons/cs2.png" alt="">CS2 · FACEIT</span>
-        <h3>CS2 как на Leetify</h3>
+        <h3>CS2 во всех подробностях</h3>
         <p>Рейтинг, сильные и слабые стороны, карты, матчи и тиммейты. Плюс официальный API FACEIT: уровень, ELO и форма.</p>
         <ul class="list"><li>Разведка лобби FACEIT перед матчем</li><li>Premier-рейтинг и ранги по картам</li><li>Поиск по нику, ссылке или SteamID</li></ul>
       </div>
@@ -477,7 +488,8 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
       <div class="card reveal"><div class="ico ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
         <h4>Никаких паролей от игр</h4><p>Пароли от Steam и игр не нужны. Steam привязывается через официальный вход Steam.</p></div>
       <div class="card reveal"><div class="ico ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></div>
-        <h4>Официальные источники</h4><p>Данные — из официальных API: Riot Games, FACEIT, Steam, Supercell, OpenDota, Chess.com и других.</p></div>
+        <h4>Открытые источники</h4><p>Данные — из официальных API (Riot Games, FACEIT, Steam, Supercell, Chess.com и других),
+          OpenDota и открытых страниц статистики.</p></div>
     </div>
   </div>
 </section>
@@ -533,10 +545,11 @@ body.is-mobile .cta .js-download{background:rgba(255,255,255,.05);border-color:v
       <a href="https://github.com/Gran14x/QPlayLink-releases/releases">Все версии</a>
       <a href="https://t.me/QPlayLink_bot">Поддержка</a>
       <a href="https://github.com/Gran14x/QPlayLink-releases/blob/main/LICENSE">Лицензия</a>
+      <a href="privacy.html">Соглашение и данные</a>
       <a href="https://github.com/Gran14x/QPlayLink-releases/blob/main/THIRD_PARTY_LICENSES.txt">Сторонние компоненты</a>
     </div>
     <p>© 2026 Greno4ka. QPlayLink — бесплатная программа. QPlayLink не связан с Valve, Riot Games, Blizzard, EA, Gaijin,
-      Supercell, HoYoverse, FACEIT и Chess.com; названия игр и логотипы принадлежат их владельцам.</p>
+      Supercell, HoYoverse, FACEIT, Leetify, OpenDota и Chess.com; названия игр и логотипы принадлежат их владельцам.</p>
     <p>QPlayLink isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially
       involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or
       registered trademarks of Riot Games, Inc. This material is unofficial and is not endorsed by Supercell. For more
